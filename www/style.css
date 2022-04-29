@@ -1,0 +1,18 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #131F34 0%, rgb(33, 52, 88) 80%);
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card {
+    background: #FFFFFF;
+    height: 140px;
+    border-radius: 10px;
+}

@@ -5,10 +5,10 @@ account: nolik2k
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 6097901
-bundleId: 5801851
+bundleId: 5807061
 url: https://nolik2k.shinyapps.io/audiorecordR/
-when: 1650023765.40066
-lastSyncTime: 1650023765.40067
+when: 1650209399.8861
+lastSyncTime: 1650209399.88611
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: .Rbuildignore|DESCRIPTION|inst/htmlwidgets/AudioReactRecorder.js|inst/htmlwidgets/AudioReactRecorder.js.map|inst/htmlwidgets/AudioReactRecorder.yaml|man/AudioReactRecorder-shiny.Rd|man/AudioReactRecorder.Rd|NAMESPACE|package.json|R/AudioReactRecorder.R|srcjs/AudioReactRecorder.jsx|srcjs/Test.js|webpack.config.js|yarn.lock|node_modules
+ignoredFiles: .gitattributes|.Rbuildignore|DESCRIPTION|inst/htmlwidgets/AudioReactRecorder.js|inst/htmlwidgets/AudioReactRecorder.js.map|inst/htmlwidgets/AudioReactRecorder.yaml|man/AudioReactRecorder-shiny.Rd|man/AudioReactRecorder.Rd|NAMESPACE|package-lock.json|package.json|R/AudioReactRecorder.R|srcjs/AudioReactRecorder.jsx|srcjs/Test.js|webpack.config.js|yarn.lock|node_modules
