@@ -1,8 +1,23 @@
-import AudioReactRecorder, { RecordState } from 'audio-react-recorder'
 import { reactWidget } from 'reactR';
-import Test from './Test.js';
+import Spectogram from './Spectogram.js';
+import StartRecordButton from './StartRecord.js';
+import StopRecordButton from './StopRecord.js';
+import DownloadRecordButton from './DownloadRecord.js';
+import PlayRecordButton from './PlayRecord.js';
 
 
 reactWidget('AudioReactRecorder', 'output', {
-  AudioReactRecorderCustom: Test
+  AudioReactRecorderCustom: Spectogram
+});
+reactWidget('StartRecord', 'output', {
+  StartRecordCustom: StartRecordButton
+});
+reactWidget('StopRecord', 'output', {
+  StopRecordCustom: StopRecordButton
+});
+reactWidget('DownloadRecord', 'output', {
+  DownloadRecordCustom: DownloadRecordButton
+});
+reactWidget('PlayRecord', 'output', {
+  PlayRecordCustom: PlayRecordButton
 });

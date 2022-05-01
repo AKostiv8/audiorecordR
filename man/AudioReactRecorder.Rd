@@ -4,7 +4,7 @@
 \alias{AudioReactRecorder}
 \title{<Add Title>}
 \usage{
-AudioReactRecorder(message, width = NULL, height = NULL, elementId = NULL)
+AudioReactRecorder(..., width = NULL, height = NULL, elementId = NULL)
 }
 \description{
 <Add Description>

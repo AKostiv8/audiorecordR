@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-    entry: path.join(__dirname, 'srcjs', 'AudioReactRecorder.jsx'),
+    entry: ["regenerator-runtime/runtime.js", path.join(__dirname, 'srcjs', 'AudioReactRecorder.jsx')],
     output: {
         path: path.join(__dirname, 'inst/htmlwidgets'),
         filename: 'AudioReactRecorder.js'
@@ -9,7 +9,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.js$|jsx/,
                 loader: 'babel-loader',
                 options: {
                     presets: ['@babel/preset-env', '@babel/preset-react']
