@@ -2,6 +2,8 @@
   "private": true,
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "@sansitech/ffmpeg": "^0.0.11",
+    "ffmpeg": "^0.0.4",
     "file-saver": "^2.0.5",
     "howler": "^2.2.3",
     "prop-types": "^15.8.1",

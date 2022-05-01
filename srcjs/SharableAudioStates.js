@@ -43,17 +43,8 @@ const useShareableState = () => {
 
     // audioData contains blob and blobUrl
     const onStop = (audioData) => {
-      console.log('audioData', audioData)
-      //let reader = new FileReader();
-      //reader.readAsDataURL(audioData.blob);
-      //reader.onload = function() {
-      //  // Share data via storage
-      //  console.log('reader', reader.result)
-      //  localStorage.clear();
-      //  localStorage.setItem('shinyStore-ex2\\dynamic_url', JSON.stringify(reader.result));
-      //};
 
-
+      console.log('Url', audioData)
       // console.log('Url', audioData.url)
       setAudioUrl(audioData.url)
       // Download button
@@ -62,8 +53,22 @@ const useShareableState = () => {
       setDisablePlay(false);
       // Set sound
       setSound(new Howl({src: [audioData.url],format: ['wav']}));
-      localStorage.clear();
-      localStorage.setItem('shinyStore-ex2\\dynamic_url', JSON.stringify(audioData.url));
+
+      //let file = new File([audioData], "filename", {type: audioData.type})
+      //console.log(file)
+      //let reader = new FileReader();
+      //reader.readAsDataURL(file);
+      //reader.onload = function() {
+      //  console.log('reader', reader.result)
+      //  localStorage.clear();
+      //  localStorage.setItem('shinyStore-ex2\\dynamic_url', JSON.stringify(reader.result));
+      //}
+
+      let data = new FormData();
+      data.append('file', audioData.url)
+
+      console.log(data)
+
     }
 
     // record 5 sec

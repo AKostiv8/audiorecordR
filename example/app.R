@@ -52,12 +52,10 @@ server <- function(input, output, session) {
     print(input$foo)
     if(!is.null(input$foo)){
 
-      a <- utils::browseURL(input$foo)
-      print(a)
-      # output$chartone <- renderUI({
-      #   plot(read_audio_fft(dataURI(as.raw(input$foo), mime = "audio/wav;base64"), window = phonTools::windowfunc(1024, 'kaiser')))
-      #
-      # })
+      output$chartone <- renderUI({
+        plot(read_audio_fft(dataURI(input$foo, mime = "audio/wav"), window = phonTools::windowfunc(1024, 'kaiser')))
+
+      })
     }
   })
 
