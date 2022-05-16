@@ -20,6 +20,8 @@ ui <- div(class='container',
     tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "simple-grid.min.css"),
       tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
+      # ,
+      # HTML('<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">')
     ),
     div(class='row',
       div(class='col-6',
@@ -63,9 +65,6 @@ ui <- div(class='container',
 
 
 server <- function(input, output, session) {
-  # output$widgetOutput <- renderAudioReactRecorder(
-  #   AudioReactRecorder("Hello world!")
-  # )
 
   observe({
     print(input$foo)
@@ -81,7 +80,8 @@ server <- function(input, output, session) {
           input$foo
           print("triggered!")
           ""
-        })
+        }),
+        invalidate_time = 30000
         # ,
         # cancel_active_job_on_input_change = FALSE, # ignore input change, wait until resolved
         # value_until_not_resolved = NULL
@@ -123,9 +123,13 @@ server <- function(input, output, session) {
         # )
         task <- plotPromise()
         if (task$resolved) {
-          ggspectro(wave = tuneR::readWave(filename = 'data/rec.wav'), ovlp = 50) +
-            geom_tile(aes(fill = amplitude)) +
-            stat_contour()
+          # waver <- tuneR::readWave(filename = 'data/rec.wav')
+          # seewave::ggspectro(wave = waver, ovlp = 50) +
+          #   geom_tile(aes(fill = amplitude)) +
+          #   stat_contour()
+          fft_data <- read_audio_fft('data/rec.wav')
+          plot(fft_data, dark = FALSE)
+
         }
       })
 
@@ -153,32 +157,13 @@ server <- function(input, output, session) {
         }
       })
 
-      # av_spectrogram_video('data/rec.wav', output = 'www/dynamic/spectrogram.mp4', res = 144)
-      # output$video_spec <- renderUI({
-      #   tagList(
-      #     tags$video(src = 'dynamic/spectrogram.mp4', height = '100%', width = '100%', controls = "controls", type = "video/mp4")
-      #   )
-      # })
 
-      # output$spectrogram <- renderUI({
-      #   spectrogram(tuneR::readWave(filename = 'data/rec.wav'), maxfreq = sound$fs/2)
-      # })
+
 
     }
   })
 
 
-  # output$wavespecto <- renderPlot({
-  #  plot(
-  #   read_audio_fft('data/rec.wav', window = phonTools::windowfunc(1024, 'kaiser'))
-  #  )
-  # })
-
-  # output$video_spec <- renderUI({
-  #   tagList(
-  #     tags$video(src = 'dynamic/spectrogram.mp4')
-  #   )
-  # })
 
 }
 
@@ -186,35 +171,4 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 
 
-# ui <- div(class='container',
-#     tags$head(
-#       tags$link(rel = "stylesheet", type = "text/css", href = "simple-grid.min.css"),
-#       tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
-#     ),
-#     div(class='row',
-#       div(class='col-2',
-#           div(class='card',
-#               StartRecord(),
-#               StopRecord(),
-#               DownloadRecord()
-#               )
-#           ),
-#       div(class='col-4',
-#           div(class='card',
-#               AudioReactRecorder(height = '100%', width = '100%')
-#               )
-#           ),
-#       div(class='col-6',
-#           div(class='card')
-#       )
-#     ),
-#     div(class='row',
-#         div(class='col-6',
-#             div(class='card')
-#         ),
-#         div(class='col-6',
-#             div(class='card')
-#         )
-#     )
-# )
 

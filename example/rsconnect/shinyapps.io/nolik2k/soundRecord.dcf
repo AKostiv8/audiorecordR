@@ -5,9 +5,9 @@ account: nolik2k
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 6209475
-bundleId: 5911155
+bundleId: 5911695
 url: https://nolik2k.shinyapps.io/soundRecord/
-when: 1652708087.4585
-lastSyncTime: 1652708087.4585
+when: 1652714864.13363
+lastSyncTime: 1652714864.13366
 asMultiple: FALSE
 asStatic: FALSE
