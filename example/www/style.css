@@ -16,6 +16,10 @@ body {
     height: 295px;
     border-radius: 10px;
     padding: 10px;
+    /* center content inside card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button_container {
@@ -33,3 +37,49 @@ body {
     height: 169px;
     margin-top: 1rem;
 }
+
+
+/* Loader */
+/* .loader {
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  border-left: 16px solid pink;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} */
+
+
+.loader {
+  border-radius: 50%;
+  border-top: 16px solid #fce74c;
+  border-right: 16px solid #3791a5;
+  border-bottom: 16px solid #213357;
+  border-left: 16px solid #db5461;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+#loader {
+  position: absolute;
+}
+#loaderspectochart {
+  position: absolute;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

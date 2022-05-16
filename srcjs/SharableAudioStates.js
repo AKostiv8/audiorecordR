@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { RecordState } from './AudioRecordCanvas';
 import {Howl, Howler} from 'howler';
+import toWav from "audiobuffer-to-wav";
+import axios from "axios";
+
+
 
 const useShareableState = () => {
     const [recordState, setRecordState] = useState(RecordState.NONE);
     const [audioUrl, setAudioUrl] = useState(null);
     const [isActive, setIsActive] = useState(false);
     const [clockedSec, setClockedSec] = useState(0);
+    const [serverAudioHost, setServerAudioHost] = useState(null)
     // Download button
     const [disableDownload, setDisableDownload] = useState(true);
     // Play button
@@ -44,7 +49,7 @@ const useShareableState = () => {
     // audioData contains blob and blobUrl
     const onStop = (audioData) => {
 
-      console.log('Url', audioData)
+      console.log(audioData.blob)
       // console.log('Url', audioData.url)
       setAudioUrl(audioData.url)
       // Download button
@@ -54,7 +59,28 @@ const useShareableState = () => {
       // Set sound
       setSound(new Howl({src: [audioData.url],format: ['wav']}));
 
-      //let file = new File([audioData], "filename", {type: audioData.type})
+      //var wavfromblob = new File([audioData], "incomingaudioclip.wav");
+      //console.log('Test');
+      //console.log(wavfromblob);
+
+      if(serverAudioHost !== null) {
+        console.log("uploading...");
+
+        let data = new FormData();
+
+        data.append('text', "this is the transcription of the audio file");
+        data.append('wavfile', audioData.blob, "recording.wav");
+
+        const config = {
+            headers: {'content-type': 'multipart/form-data'}
+        }
+        axios.post(serverAudioHost, data, config);
+
+        localStorage.clear();
+        localStorage.setItem('shinyStore-ex2\\dynamic_url', JSON.stringify(audioData.url));
+      }
+
+      // let file = new File([audioData], "filename", {type: audioData.type})
       //console.log(file)
       //let reader = new FileReader();
       //reader.readAsDataURL(file);
@@ -64,12 +90,13 @@ const useShareableState = () => {
       //  localStorage.setItem('shinyStore-ex2\\dynamic_url', JSON.stringify(reader.result));
       //}
 
-      let data = new FormData();
-      data.append('file', audioData.url)
-
-      console.log(data)
+      //let data = new FormData();
+      //data.append('file', audioData.url)
+      //console.log(data)
 
     }
+
+
 
     // record 5 sec
     useEffect(() => {
@@ -109,7 +136,8 @@ const useShareableState = () => {
       disablePlay, setDisablePlay,
       playRecord, setPlayRecord,
       disableStop, setDisableStop,
-      sound, setSound
+      sound, setSound,
+      serverAudioHost, setServerAudioHost
     };
   };
 

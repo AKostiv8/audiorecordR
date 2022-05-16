@@ -5,11 +5,11 @@
 #' @import htmlwidgets
 #'
 #' @export
-AudioReactRecorder <- function(..., width = NULL, height = NULL, elementId = NULL) {
+AudioReactRecorder <- function(..., host, width = NULL, height = NULL, elementId = NULL) {
 
   # describe a React component to send to the browser for rendering.
   # component <- reactR::reactMarkup(htmltools::tag("div", list(message)))
-  component <- reactR::reactMarkup(reactR::component("AudioReactRecorderCustom", list(...)))
+  component <- reactR::reactMarkup(reactR::component("AudioReactRecorderCustom", list(..., host = host)))
 
 
 

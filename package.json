@@ -3,13 +3,17 @@
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "@sansitech/ffmpeg": "^0.0.11",
+    "audiobuffer-to-wav": "^1.0.0",
+    "axios": "^0.27.2",
     "ffmpeg": "^0.0.4",
     "file-saver": "^2.0.5",
+    "fs": "^0.0.1-security",
     "howler": "^2.2.3",
     "prop-types": "^15.8.1",
     "react-icons": "^4.3.1",
     "react-use-audio-player": "^1.2.5",
-    "use-between": "^1.3.1"
+    "use-between": "^1.3.1",
+    "wavefile": "^11.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",

@@ -362,12 +362,21 @@ export class AudioReactRecorder extends React.Component {
     // our final binary blob
     const blob = new Blob([view], { type: type })
     const audioUrl = URL.createObjectURL(blob)
+    console.log(blob)
+    const wavfromblob = new File([blob], "incomingaudioclip.wav");
+    console.log(wavfromblob);
+
+    console.log(audioUrl);
+
+
 
     onStop &&
       onStop({
         blob: blob,
         url: audioUrl,
-        type
+        type,
+        view,
+        buffer
       })
 
       this.analyser = null
