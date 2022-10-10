@@ -19,9 +19,8 @@ worker <- initialize_worker()
 ui <- div(class='container',
     tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "simple-grid.min.css"),
-      tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
-      # ,
-      # HTML('<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">')
+      tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
+      HTML('<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">')
     ),
     div(class='row',
       div(class='col-6',
@@ -32,7 +31,11 @@ ui <- div(class='container',
               PlayRecord()
               ),
           div(class='card spectogram_container',
-              AudioReactRecorder(height = '100%', width = '100%', host = 'http://www.bohemia.fun:2000/upload')
+              AudioReactRecorder(height = '100%',
+                                 width = '100%',
+                                 host = 'https://damp-earth-08851.herokuapp.com/upload'
+                                 # host = 'http://www.bohemia.fun:2000/upload'
+                                 )
           )
       ),
       div(class='col-6',
@@ -81,7 +84,7 @@ server <- function(input, output, session) {
           print("triggered!")
           ""
         }),
-        invalidate_time = 30000
+        invalidate_time = 7000
         # ,
         # cancel_active_job_on_input_change = FALSE, # ignore input change, wait until resolved
         # value_until_not_resolved = NULL
